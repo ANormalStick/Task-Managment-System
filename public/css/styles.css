@@ -1,0 +1,142 @@
+/* General styling for the main page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.board-list {
+    list-style: none;
+    padding: 0;
+}
+
+.board-item {
+    padding: 10px;
+    margin: 10px 0;
+    background: #e0e0e0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.board-item:hover {
+    background: #d0d0d0;
+}
+
+.board-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.board-item a:hover {
+    text-decoration: underline;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Edit and Delete buttons */
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Hide Home and Dashboard buttons */
+nav .home-button, nav .dashboard-button {
+    display: none;
+}
+
+/* Logout button */
+.logout-button {
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #e0a800;
+}
+
+/* Login/Register Page Styling */
+.login-register-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.login-register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-register-container input[type="text"],
+.login-register-container input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-register-container button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-register-container button:hover {
+    background-color: #0056b3;
+}

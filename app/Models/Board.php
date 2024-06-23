@@ -15,6 +15,14 @@ class Board extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description'
+        'name', 'description',
     ];
+
+    /**
+     * Get the tasks for the board.
+     */
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

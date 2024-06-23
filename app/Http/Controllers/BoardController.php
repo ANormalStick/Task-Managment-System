@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Board;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
@@ -40,7 +41,9 @@ class BoardController extends Controller
 
     public function show(Board $board)
     {
-        return view('boards.show', compact('board'));
+        $board->load('tasks');
+        $users = User::all();
+        return view('boards.show', compact('board', 'users'));
     }
 
     public function edit(Board $board)

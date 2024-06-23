@@ -9,6 +9,7 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\TaskController;
 
 
+
 Route::get('/', [MainController::class, 'index'])->name('home');
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -22,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::resource('boards', BoardController::class);
-    Route::resource('tasks', TaskController::class);
+    Route::resource('boards.tasks', TaskController::class); // Nested routes for tasks under boards
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

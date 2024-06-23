@@ -5,7 +5,16 @@
 </head>
 <body>
     <h1>Edit Task</h1>
-    <form method="POST" action="{{ route('tasks.update', $task->id) }}">
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form method="POST" action="{{ route('boards.tasks.update', [$board, $task]) }}">
         @csrf
         @method('PUT')
         <label for="title">Title</label>
@@ -24,19 +33,16 @@
             <option value="medium" {{ $task->priority == 'medium' ? 'selected' : '' }}>Medium</option>
             <option value="high" {{ $task->priority == 'high' ? 'selected' : '' }}>High</option>
         </select><br>
-        <label for="board_id">Board</label>
-        <select name="board_id">
-            @foreach ($boards as $board)
-                <option value="{{ $board->id }}" {{ $task->board_id == $board->id ? 'selected' : '' }}>{{ $board->name }}</option>
-            @endforeach
-        </select><br>
         <label for="assigned_user_id">Assigned User</label>
         <select name="assigned_user_id">
+            <option value="">None</option>
             @foreach ($users as $user)
                 <option value="{{ $user->id }}" {{ $task->assigned_user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
             @endforeach
         </select><br>
         <button type="submit">Update</button>
     </form>
+
+    <a href="{{ route('boards.show', $board) }}">Back to Board</a>
 </body>
 </html>

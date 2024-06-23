@@ -15,6 +15,23 @@ class Task extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'status', 'priority', 'board_id', 'assigned_user_id'
+        'title', 'description', 'status', 'priority', 'board_id', 'assigned_user_id',
     ];
+
+    /**
+     * Get the board that owns the task.
+     */
+    public function board()
+    {
+        return $this->belongsTo(Board::class);
+    }
+
+    /**
+     * Get the user assigned to the task.
+     */
+    public function assignedUser()
+    {
+        return $this->belongsTo(User::class, 'assigned_user_id');
+    }
 }
+
