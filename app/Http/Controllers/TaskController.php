@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Task;
+use App\Models\Task; // Ensure this is the correct namespace
 use App\Models\Board;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -91,3 +91,4 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 }
+

@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\TaskController;
+
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
@@ -21,4 +23,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('boards', BoardController::class);
     Route::resource('tasks', TaskController::class);
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('users', UserController::class);
 });

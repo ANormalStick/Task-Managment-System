@@ -26,11 +26,12 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'authenticated_user', // Default role assignment
         ]);
 
         Auth::login($user); // Automatically log in the user after registration
 
-        return redirect()->route('tasks.index'); // Redirect to the task board
+        return redirect()->route('boards.index'); // Redirect to the boards page
     }
 
     public function showLoginForm()
@@ -40,15 +41,20 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('tasks.index'); // Redirect to the task board
+            return redirect()->route('boards.index'); // Redirect to the boards page
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ]);
+        ])->withInput($request->only('email'));
     }
 
     public function logout(Request $request)
@@ -57,3 +63,4 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 }
+
