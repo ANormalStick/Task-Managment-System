@@ -72,11 +72,19 @@ class BoardController extends Controller
 
     public function destroy(Board $board)
     {
-        if (Auth::user()->role !== 'admin') {
+        if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'team_member') {
             return redirect()->route('boards.index')->withErrors('You do not have permission to delete boards.');
         }
 
+        // Check for associated tasks
+        if ($board->tasks()->exists()) {
+            return redirect()->route('boards.index')->withErrors('Cannot delete board with associated tasks.');
+        }
+
+        // Delete the board
         $board->delete();
+
         return redirect()->route('boards.index');
     }
+
 }

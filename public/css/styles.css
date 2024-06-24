@@ -1,9 +1,10 @@
 /* General styling for the main page */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 .container {
@@ -11,132 +12,387 @@ body {
     margin: 0 auto;
     padding: 20px;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow: hidden;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #333;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
 }
 
-.board-list {
+/* Main page links styling */
+.main-page-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-page-links a {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.main-page-links a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* New Styles for Boards and Tasks */
+.board-list,
+.task-list {
     list-style: none;
     padding: 0;
 }
 
-.board-item {
-    padding: 10px;
+.board-item,
+.task-item {
+    padding: 15px;
     margin: 10px 0;
-    background: #e0e0e0;
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.board-item:hover {
-    background: #d0d0d0;
+.board-item:hover,
+.task-item:hover {
+    background: #f9f9f9;
+    transform: translateY(-2px);
 }
 
-.board-item a {
+.board-item a,
+.task-item a {
     text-decoration: none;
-    color: #007bff;
+    transition: color 0.3s ease;
 }
 
-.board-item a:hover {
+.board-item a:hover,
+.task-item a:hover {
     text-decoration: underline;
 }
 
+/* Buttons Styling */
 .buttons {
     display: flex;
     gap: 10px;
 }
 
-/* Edit and Delete buttons */
-.edit-button, .delete-button {
-    padding: 5px 10px;
+.edit-button,
+.delete-button,
+.back-button,
+.logout-button,
+.admin-button {
+    padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+    display: inline-block;
 }
 
 .edit-button {
     background-color: #28a745;
-    color: white;
 }
 
 .edit-button:hover {
     background-color: #218838;
+    transform: translateY(-2px);
 }
 
 .delete-button {
     background-color: #dc3545;
-    color: white;
 }
 
 .delete-button:hover {
     background-color: #c82333;
+    transform: translateY(-2px);
 }
 
-/* Hide Home and Dashboard buttons */
-nav .home-button, nav .dashboard-button {
-    display: none;
+.back-button {
+    background-color: #007bff;
+    padding: 10px 15px;
+    margin-top: 15px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Logout button */
+.back-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
 .logout-button {
-    padding: 10px 20px;
     background-color: #ffc107;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .logout-button:hover {
     background-color: #e0a800;
+    transform: translateY(-2px);
 }
 
-/* Login/Register Page Styling */
-.login-register-container {
-    width: 300px;
-    margin: 50px auto;
+/* Form Styling */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
     padding: 20px;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow: hidden;
 }
 
-.login-register-container h2 {
-    text-align: center;
+.form-container .form-group {
     margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
     color: #333;
+    font-weight: bold;
 }
 
-.login-register-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-register-container input[type="text"],
-.login-register-container input[type="password"] {
-    padding: 10px;
-    margin: 10px 0;
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.login-register-container button {
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #007bff;
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="password"]:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
 }
 
-.login-register-container button:hover {
+.form-container button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Error Message Styling */
+.error {
+    color: red;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Add new transitions and hover effects */
+.board-item:hover,
+.task-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.edit-button,
+.delete-button,
+.back-button,
+.logout-button {
+    font-size: 16px;
+}
+
+/* Login and Register Page Styling */
+.login-register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.login-register-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-register-container form input[type="text"],
+.login-register-container form input[type="email"],
+.login-register-container form input[type="password"],
+.login-register-container form button {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.login-register-container form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.login-register-container form button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.admin-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.admin-button:hover {
     background-color: #0056b3;
 }
+
+/* Comments Section Styling */
+.comments-section {
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.comments-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.comments-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comments-section li {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.comments-section li:hover {
+    background: #f4f4f4;
+    transform: translateY(-2px);
+}
+
+.comments-section .comment-body {
+    flex-grow: 1;
+}
+
+.comments-section .comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.delete-comment-button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.delete-comment-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Form styling inside the comments section */
+.comments-section .form-group {
+    margin-bottom: 15px;
+}
+
+.comments-section textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comments-section textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.comments-section .btn-primary {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+}
+
+.comments-section .btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+

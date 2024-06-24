@@ -2,25 +2,29 @@
 <html>
 <head>
     <title>Create Board</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-    <h1>Create a new Board</h1>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <form method="POST" action="{{ route('boards.store') }}">
-        @csrf
-        <label for="name">Name</label>
-        <input type="text" name="name" required><br>
-        <label for="description">Description</label>
-        <textarea name="description"></textarea><br>
-        <button type="submit">Create</button>
-    </form>
+    <div class="form-container">
+        <h1>Create a new Board</h1>
+        @if ($errors->any())
+            <div class="error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="{{ route('boards.store') }}">
+            @csrf
+            <label for="name">Name</label>
+            <input type="text" name="name" required>
+            <label for="description">Description</label>
+            <textarea name="description"></textarea>
+            <button type="submit">Create</button>
+        </form>
+        <a href="{{ route('boards.index') }}" class="back-button">Back to Boards</a>
+    </div>
 </body>
 </html>

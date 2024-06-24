@@ -6,18 +6,12 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{{ route('home') }}">Home</a>
-        <a href="{{ route('boards.index') }}">Boards</a>
-        @auth
-            <a href="{{ route('dashboard') }}">Dashboard</a>
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+        <nav>
+            <button class="logout-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
-                <button type="submit">Logout</button>
             </form>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
-        @endauth
+        </nav>
     </div>
 
     <div class="container">

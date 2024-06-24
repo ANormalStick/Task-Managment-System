@@ -70,7 +70,7 @@ class TaskController extends Controller
 
     public function destroy(Board $board, Task $task)
     {
-        if (Auth::user()->role !== 'admin') {
+        if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'team_member') {
             return redirect()->route('boards.show', $board)->withErrors('You do not have permission to delete tasks.');
         }
 
