@@ -76,12 +76,10 @@ class BoardController extends Controller
             return redirect()->route('boards.index')->withErrors('You do not have permission to delete boards.');
         }
 
-        // Check for associated tasks
         if ($board->tasks()->exists()) {
             return redirect()->route('boards.index')->withErrors('Cannot delete board with associated tasks.');
         }
 
-        // Delete the board
         $board->delete();
 
         return redirect()->route('boards.index');

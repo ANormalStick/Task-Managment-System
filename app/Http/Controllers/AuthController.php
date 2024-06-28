@@ -26,12 +26,12 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'authenticated_user', // Default role assignment
+            'role' => 'authenticated_user',
         ]);
 
-        Auth::login($user); // Automatically log in the user after registration
+        Auth::login($user); 
 
-        return redirect()->route('boards.index'); // Redirect to the boards page
+        return redirect()->route('boards.index');
     }
 
     public function showLoginForm()
@@ -49,7 +49,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('boards.index'); // Redirect to the boards page
+            return redirect()->route('boards.index');
         }
 
         return back()->withErrors([

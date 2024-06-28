@@ -25,7 +25,6 @@ class CommentController extends Controller
 
     public function destroy(Task $task, Comment $comment)
     {
-        // Check if the user is authorized to delete the comment
         if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'team_member') {
             return back()->with('error', 'You are not authorized to delete this comment.');
         }
